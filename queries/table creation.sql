@@ -61,6 +61,59 @@ select *
 			from t1, t2
 		) sub
 	
+-- uploading pre pandemic data 2016 --
+
+drop table clean_physicians_2016
+
+create table clean_physicians_2016 (
+	SpecialtyId INTEGER PRIMARY KEY,
+	Specialty TEXT,
+	"Number of Physicans" TEXT,
+	AVGSalary TEXT,
+	"Medicine Satisfaction" NUMERIC,
+	"Income Satisfaction" NUMERIC,
+	Men TEXT,
+	Woman TEXT,
+	"Specialty Satisfaction" NUMERIC,
+	"Total Work Hours" NUMERIC,
+	"Burned Out" NUMERIC,
+	"Overweight" NUMERIC,
+	"Exercise" NUMERIC,
+	"HappiestAtWork" NUMERIC,
+	"HappiestOutside" NUMERIC
+);
+
+COPY clean_physicians_2016(SpecialtyId,Specialty,"Number of Physicans",AVGSalary,"Medicine Satisfaction","Income Satisfaction",
+						   Men,Woman,"Specialty Satisfaction","Total Work Hours","Burned Out","Overweight",
+						   "Exercise","HappiestAtWork","HappiestOutside")
+	FROM 'C:\Users\evana\OneDrive\Desktop\github projects\Med School ROI\updated datasources\clean_physician_data_2016.csv' DELIMITER ',' CSV HEADER;
+
+
+-- uploading pre pandemic data 2018 --
+
+drop table clean_physicians_2018
+
+create table clean_physicians_2018 (
+	SpecialtyId INTEGER PRIMARY KEY,
+	Specialty TEXT,
+	"Number of Physicans" TEXT,
+	AVGSalary TEXT,
+	"Medicine Satisfaction" NUMERIC,
+	"Income Satisfaction" NUMERIC,
+	Men TEXT,
+	Woman TEXT,
+	"Specialty Satisfaction" NUMERIC,
+	"Total Work Hours" NUMERIC,
+	"Burned Out" NUMERIC,
+	"Fewer Friends" NUMERIC,
+	"Seek_Help" NUMERIC,
+	"HappiestAtWork" NUMERIC,
+	"DepressionAndBurnout" NUMERIC
+);
+
+COPY clean_physicians_2018(SpecialtyId,Specialty,"Number of Physicans",AVGSalary,"Medicine Satisfaction","Income Satisfaction",
+						   Men,Woman,"Specialty Satisfaction","Total Work Hours","Burned Out","Fewer Friends","Seek_Help","HappiestAtWork","DepressionAndBurnout")
+	FROM 'C:\Users\evana\OneDrive\Desktop\github projects\Med School ROI\updated datasources\clean_physician_data_2018.csv' DELIMITER ',' CSV HEADER;
 
 -- uploading post pandemic data 2020 --
 
@@ -116,4 +169,3 @@ COPY clean_physicians_2022(SpecialtyId,Specialty,"Number of Physicans",AVGSalary
 						   Men,Woman,"Specialty Satisfaction","Total Work Hours","Weekly Work Hours w/ Patients",
 						   "Weekly Work Hours on Paperwork","Happiest Marriages","Burned Out", "Suicidal Thoughts")
 	FROM 'C:\Users\evana\OneDrive\Desktop\github projects\Med School ROI\updated datasources\clean_physician_data_2022.csv' DELIMITER ',' CSV HEADER;
-
