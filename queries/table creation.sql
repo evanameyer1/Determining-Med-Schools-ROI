@@ -1,5 +1,5 @@
 drop table specialty_count
-create table specialty_count (
+MAcreate table specialty_count (
 	specialty TEXT,
 	total_active_physicians TEXT,
 	patient_care TEXT,
@@ -61,4 +61,59 @@ select *
 			from t1, t2
 		) sub
 	
-	
+
+-- uploading post pandemic data 2020 --
+
+drop table clean_physicians_2020
+
+create table clean_physicians_2020 (
+	SpecialtyId INTEGER PRIMARY KEY,
+	Specialty TEXT,
+	"Number of Physicans" INTEGER,
+	AVGSalary INTEGER,
+	AVGBonus INTEGER,
+	"Compensation Satisfaction" NUMERIC,
+	Men INTEGER,
+	Woman INTEGER,
+	"Specialty Satisfaction" NUMERIC,
+	"Total Work Hours" INTEGER,
+	"Weekly Work Hours w/ Patients" NUMERIC,
+	"Weekly Work Hours on Paperwork" NUMERIC,
+	"Happiest Outside of Work" NUMERIC,
+	"Happiest Marriages" NUMERIC,
+	"Burned Out" NUMERIC	
+);
+
+COPY clean_physicians_2020(SpecialtyId,Specialty,"Number of Physicans",AVGSalary,AVGBonus,"Compensation Satisfaction",
+						   Men,Woman,"Specialty Satisfaction","Total Work Hours","Weekly Work Hours w/ Patients",
+						   "Weekly Work Hours on Paperwork","Happiest Outside of Work","Happiest Marriages","Burned Out")
+	FROM 'C:\Users\evana\OneDrive\Desktop\github projects\Med School ROI\updated datasources\clean_physician_data_2020.csv' DELIMITER ',' CSV HEADER;
+
+
+-- uploading post pandemic data 2022 --
+
+drop table clean_physicians_2022
+
+create table clean_physicians_2022 (
+	SpecialtyId INTEGER PRIMARY KEY,
+	Specialty TEXT,
+	"Number of Physicans" INTEGER,
+	AVGSalary INTEGER,
+	AVGBonus INTEGER,
+	"Compensation Satisfaction" NUMERIC,
+	Men INTEGER,
+	Woman INTEGER,
+	"Specialty Satisfaction" NUMERIC,
+	"Total Work Hours" INTEGER,
+	"Weekly Work Hours w/ Patients" NUMERIC,
+	"Weekly Work Hours on Paperwork" NUMERIC,
+	"Happiest Marriages" NUMERIC,
+	"Burned Out" NUMERIC,
+	"Suicidal Thoughts" NUMERIC
+);
+
+COPY clean_physicians_2022(SpecialtyId,Specialty,"Number of Physicans",AVGSalary,AVGBonus,"Compensation Satisfaction",
+						   Men,Woman,"Specialty Satisfaction","Total Work Hours","Weekly Work Hours w/ Patients",
+						   "Weekly Work Hours on Paperwork","Happiest Marriages","Burned Out", "Suicidal Thoughts")
+	FROM 'C:\Users\evana\OneDrive\Desktop\github projects\Med School ROI\updated datasources\clean_physician_data_2022.csv' DELIMITER ',' CSV HEADER;
+
